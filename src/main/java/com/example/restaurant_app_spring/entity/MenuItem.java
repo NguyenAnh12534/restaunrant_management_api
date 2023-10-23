@@ -6,20 +6,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "items")
+@Data
 public class MenuItem {
 
     @Id
     @GeneratedValue
     @Column(name = "item_pk")
     private Integer id;
-
     private String name;
-
     @ManyToMany(mappedBy = "menuItems")
     private Set<BillOrder> billOrders;
+
 }

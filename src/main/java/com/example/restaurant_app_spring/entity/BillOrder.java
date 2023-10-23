@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
 import java.util.Set;
 
@@ -27,4 +28,5 @@ public class BillOrder {
             inverseJoinColumns = {@JoinColumn(name = "menu_item_fk")}
     )
     private Set<MenuItem> menuItems;
+
 }
