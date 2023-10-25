@@ -3,10 +3,7 @@ package com.example.restaurant_app_spring.validator;
 import com.example.restaurant_app_spring.annotation.validator.SortingConstraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-
 import java.lang.reflect.Field;
-import java.util.stream.Stream;
 
 public class SortingValidator implements ConstraintValidator<SortingConstraint, String> {
     private SortingConstraint sortingConstraint;

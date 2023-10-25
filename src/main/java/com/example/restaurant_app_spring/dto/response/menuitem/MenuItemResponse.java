@@ -1,6 +1,6 @@
 package com.example.restaurant_app_spring.dto.response.menuitem;
 
-public class MenuItemResponseDto {
+public class MenuItemResponse {
     public Integer id;
     public String name;
 }

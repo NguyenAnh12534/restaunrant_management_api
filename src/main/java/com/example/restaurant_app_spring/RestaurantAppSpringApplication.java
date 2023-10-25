@@ -11,9 +11,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class RestaurantAppSpringApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(RestaurantAppSpringApplication.class, args);
     }
-
 }
