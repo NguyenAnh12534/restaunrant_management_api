@@ -64,10 +64,9 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     @Override
-    public MenuItemResponse delete(Integer idToDelete) {
+    public void delete(Integer idToDelete) {
         MenuItem menuItemToDelete = this.menuItemRepository.findById(idToDelete).orElseThrow();
         this.menuItemRepository.delete(menuItemToDelete);
 
-        return null;
     }
 }

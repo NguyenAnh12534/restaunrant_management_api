@@ -15,5 +15,5 @@ public interface MenuItemService {
     MenuItemResponse getById(int id);
     MenuItemResponse update(Integer idToUpdate, MenuItemRequest menuItemUpdateRequest);
     MenuItemResponse updatePartial(Integer idToUpdate, MenuItemRequest menuItemUpdateRequest);
-    MenuItemResponse delete(Integer idToDelete);
+    void delete(Integer idToDelete);
 }
