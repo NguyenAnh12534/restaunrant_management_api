@@ -27,9 +27,6 @@ public class BillOrder {
     private Integer id;
 
     private BillOrderStatus status = BillOrderStatus.UN_PAID;
-    @ManyToOne
-    @JoinColumn(name = "customer_fk")
-    private Customer customer;
 
     @OneToMany(mappedBy = "billOrder")
     private List<BillDetail> billDetails = new ArrayList<>();

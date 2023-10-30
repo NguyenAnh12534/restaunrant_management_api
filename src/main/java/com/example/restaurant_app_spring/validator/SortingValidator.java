@@ -12,7 +12,6 @@ public class SortingValidator implements ConstraintValidator<SortingConstraint, 
     public void initialize(SortingConstraint constraintAnnotation) {
         this.sortingConstraint = constraintAnnotation;
         ConstraintValidator.super.initialize(constraintAnnotation);
-
     }
 
     @Override

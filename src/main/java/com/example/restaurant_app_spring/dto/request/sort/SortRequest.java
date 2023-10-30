@@ -19,7 +19,7 @@ public class SortRequest {
 
     }
 
-    public void setSORT(String sortString) {
+    public void setSort(String sortString) {
         String[] fieldNames = sortString.split(",");
         for(String fieldName : fieldNames) {
             SortItem sortItem = new SortItem();

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "items")
+@Table(name = "menu_items")
 @Data
 public class MenuItem {
 
@@ -30,11 +30,36 @@ public class MenuItem {
     private String description;
     private String image;
     private Double price;
-    @ManyToMany(mappedBy = "menuItems")
-    private List<Type> types = new ArrayList<>();
     @CreationTimestamp
     private Timestamp createdAt;
 
     @UpdateTimestamp
     private Timestamp updatedAt;
+
+    public void load(MenuItem menuItem) {
+        if(menuItem == null)
+            return;
+
+        this.name = menuItem.getName();
+        this.description = menuItem.getDescription();
+        this.price = menuItem.getPrice();
+        this.image = menuItem.image;
+    }
+
+    public void loadNonNullFields(MenuItem menuItem) {
+        if(menuItem == null)
+            return;
+
+        if(menuItem.name != null)
+            this.name = menuItem.name;
+
+        if(menuItem.description != null)
+            this.description = menuItem.description;
+
+        if(menuItem.price != null)
+            this.price = menuItem.price;
+
+        if(menuItem.image != null)
+            this.image = menuItem.image;
+    }
 }

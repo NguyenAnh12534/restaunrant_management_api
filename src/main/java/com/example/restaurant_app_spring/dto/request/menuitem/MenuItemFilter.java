@@ -11,4 +11,7 @@ import lombok.ToString;
 public class MenuItemFilter {
 
     public String name;
+    public String description;
+    @Min(0)
+    private Double price;
 }

@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class MultipartMapper {
     public String asString(MultipartFile file) {
+        if(file == null)
+            return null;
         return file.getOriginalFilename();
     }
     public MultipartMapper(){
