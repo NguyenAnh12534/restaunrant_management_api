@@ -45,4 +45,8 @@ public class SortRequest {
 
         return orders;
     }
+
+    public Sort build() {
+        return Sort.by(this.extractOrders());
+    }
 }

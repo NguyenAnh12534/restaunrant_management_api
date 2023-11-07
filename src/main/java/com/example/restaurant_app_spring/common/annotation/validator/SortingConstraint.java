@@ -1,4 +1,4 @@
-package com.example.restaurant_app_spring.annotation.validator;
+package com.example.restaurant_app_spring.common.annotation.validator;
 
 
 import com.example.restaurant_app_spring.validator.SortingValidator;

@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
 public class DtoExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(InvalidDataException.class)
+    @ExceptionHandler({InvalidDataException.class})
     public ResponseEntity<ErrorResponse> handleInvalidInputException(InvalidDataException exception){
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.message = ErrorMessageConstant.INPUT_NOT_VALID_MESSAGE;
@@ -28,7 +27,6 @@ public class DtoExceptionHandler extends ResponseEntityExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
-
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request){

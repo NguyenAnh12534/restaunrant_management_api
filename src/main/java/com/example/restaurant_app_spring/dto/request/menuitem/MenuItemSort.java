@@ -1,8 +1,8 @@
-package com.example.restaurant_app_spring.dto.request.sort;
+package com.example.restaurant_app_spring.dto.request.menuitem;
 
-import com.example.restaurant_app_spring.annotation.validator.SortingConstraint;
+import com.example.restaurant_app_spring.common.annotation.validator.SortingConstraint;
+import com.example.restaurant_app_spring.dto.request.sort.SortRequest;
 import com.example.restaurant_app_spring.entity.MenuItem;
-import jakarta.validation.constraints.Email;
 
 public class MenuItemSort extends SortRequest
 {

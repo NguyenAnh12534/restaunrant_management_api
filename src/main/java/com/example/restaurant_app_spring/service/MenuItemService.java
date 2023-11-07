@@ -10,7 +10,6 @@ import java.util.List;
 
 public interface MenuItemService {
     MenuItemResponse create(MenuItemRequest menuItemRequest);
-
     List<MenuItemResponse> getAll(MenuItemFilter filter, PaginationRequest paginationRequest, SortRequest sort);
     MenuItemResponse getById(int id);
     MenuItemResponse update(Integer idToUpdate, MenuItemRequest menuItemUpdateRequest);

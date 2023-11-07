@@ -6,15 +6,19 @@ import com.example.restaurant_app_spring.dto.request.pagination.PaginationReques
 import com.example.restaurant_app_spring.dto.request.sort.SortRequest;
 import com.example.restaurant_app_spring.dto.response.menuitem.MenuItemResponse;
 import com.example.restaurant_app_spring.entity.MenuItem;
+import com.example.restaurant_app_spring.mapper.BillDetailMapper;
+import com.example.restaurant_app_spring.mapper.BillOrderMapper;
 import com.example.restaurant_app_spring.mapper.MenuItemMapper;
 import com.example.restaurant_app_spring.repository.MenuItemRepository;
 import com.example.restaurant_app_spring.service.MenuItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.regex.Matcher;
 
 @Service
 @RequiredArgsConstructor
@@ -40,8 +44,9 @@ public class MenuItemServiceImpl implements MenuItemService {
     public List<MenuItemResponse> getAll(MenuItemFilter filter, PaginationRequest paginationRequest, SortRequest sort) {
         PageRequest pageRequest = PageRequest.of(paginationRequest.getPageNumber(),  paginationRequest.getPageLimit(), Sort.by(sort.extractOrders()));
         MenuItem probe = this.menuItemMapper.convertToEntityFromFilter(filter);
-        List<MenuItem> menuItems = this.menuItemRepository.findAll(Example.of(probe), pageRequest).getContent();
+        ExampleMatcher matcher = ExampleMatcher.matchingAny() .withMatcher("name",  new ExampleMatcher.GenericPropertyMatcher().contains());
 
+        List<MenuItem> menuItems = this.menuItemRepository.findAll(Example.of(probe, matcher), pageRequest).getContent();
         return menuItemMapper.convertToDtos(menuItems);
     }
 
@@ -67,6 +72,5 @@ public class MenuItemServiceImpl implements MenuItemService {
     public void delete(Integer idToDelete) {
         MenuItem menuItemToDelete = this.menuItemRepository.findById(idToDelete).orElseThrow();
         this.menuItemRepository.delete(menuItemToDelete);
-
     }
 }

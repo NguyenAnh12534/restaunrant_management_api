@@ -9,7 +9,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class MenuItemFilter {
-
     public String name;
     public String description;
     @Min(0)

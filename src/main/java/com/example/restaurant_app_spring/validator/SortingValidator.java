@@ -1,6 +1,6 @@
 package com.example.restaurant_app_spring.validator;
 
-import com.example.restaurant_app_spring.annotation.validator.SortingConstraint;
+import com.example.restaurant_app_spring.common.annotation.validator.SortingConstraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.lang.reflect.Field;
