@@ -8,6 +8,7 @@ import com.example.restaurant_app_spring.dto.response.SuccessResponse;
 import com.example.restaurant_app_spring.dto.response.menuitem.MenuItemResponse;
 import com.example.restaurant_app_spring.service.MenuItemService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -71,7 +71,7 @@ public class BillOrderController {
         String resourceLocation = BILL_ORDER_ENDPOINT + "/" + billOrderResponse.getId();
         httpHeaders.set("Location", resourceLocation);
 
-        return ResponseEntity.created(URI.create(resourceLocation)).build();
+        return ResponseEntity.created(URI.create(resourceLocation)).headers(httpHeaders).build();
     }
 
     @DeleteMapping("{billId}/menu-items/{menuItemId}")

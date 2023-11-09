@@ -10,7 +10,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -30,6 +35,8 @@ public class MenuItem {
     private String description;
     private String image;
     private Double price;
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
     @CreationTimestamp
     private Timestamp createdAt;
 

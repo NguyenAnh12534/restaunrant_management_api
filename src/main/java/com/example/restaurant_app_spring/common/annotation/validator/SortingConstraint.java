@@ -4,6 +4,7 @@ package com.example.restaurant_app_spring.common.annotation.validator;
 import com.example.restaurant_app_spring.validator.SortingValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+import org.hibernate.annotations.Filter;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
@@ -15,7 +16,7 @@ import java.lang.annotation.Target;
         ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = SortingValidator.class)
-public @interface  SortingConstraint  {
+public @interface  SortingConstraint {
 
     String message() default "must be a valid sort field," +
             " found: ${validatedValue}";

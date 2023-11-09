@@ -17,9 +17,7 @@ import com.example.restaurant_app_spring.repository.BillDetailRepository;
 import com.example.restaurant_app_spring.repository.BillOrderRepository;
 import com.example.restaurant_app_spring.repository.MenuItemRepository;
 import com.example.restaurant_app_spring.service.BillOrderService;
-import jakarta.transaction.NotSupportedException;
 import jakarta.transaction.Transactional;
-import jdk.jshell.spi.ExecutionControl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -42,7 +40,6 @@ public class BillOrderServiceImpl implements BillOrderService {
     public List<BillOrderResponse> getAllBillOrder(PaginationRequest paginationRequest, SortRequest sort) {
         PageRequest pageRequest = PageRequest.of(paginationRequest.getPageNumber(),  paginationRequest.getPageLimit(), Sort.by(sort.extractOrders()));
         List<BillOrder> billOrders = this.billOrderRepository.findAll(pageRequest).getContent();
-
         return this.billOrderMapper.convertToDtos(billOrders);
     }
 
@@ -100,7 +97,7 @@ public class BillOrderServiceImpl implements BillOrderService {
             throw new NoSuchElementException();
         }
 
-        this.billDetailRepository.deleteByMenuItemId(menuItemId);
+        this.billDetailRepository.deleteByMenuItemIdAndBillOrderId(menuItemId, billOrder.getId());
     }
 
     protected void validateBillDetail(BillDetail billDetailToValidate) {

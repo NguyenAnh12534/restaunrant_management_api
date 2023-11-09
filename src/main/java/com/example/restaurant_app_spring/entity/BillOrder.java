@@ -20,6 +20,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Getter
@@ -55,11 +56,15 @@ public class BillOrder {
         return totalPrice;
     }
 
-    public void addBillDetail(BillDetail billDetail) {
-        if(billDetail == null)
+    public void addBillDetail(BillDetail billDetailToAdd) {
+        if(billDetailToAdd == null)
             return;
-        this.billDetails.add(billDetail);
-        billDetail.setBillOrder(this);
+        Optional<BillDetail> existedBillDetail = this.getBillDetailWithMenuItem(billDetailToAdd.getMenuItem());
+        if(existedBillDetail.isPresent()) {
+           this.addToExistedBillDetail(existedBillDetail.get(), billDetailToAdd);
+        } else {
+            this.addNewBillDetail(billDetailToAdd);
+        }
     }
 
     public void addBillDetails(List<BillDetail> billDetailsToAdd) {
@@ -108,5 +113,28 @@ public class BillOrder {
                 billDetailIterator.remove();
             }
         }
+    }
+
+    public Optional<BillDetail> getBillDetailWithMenuItem(MenuItem menuItem) {
+        BillDetail billDetailWithMenuItem = null;
+
+        for(BillDetail billDetail : this.billDetails) {
+            if(billDetail.getMenuItem().equals(menuItem)) {
+                billDetailWithMenuItem = billDetail;
+                break;
+            }
+        }
+
+        return Optional.ofNullable(billDetailWithMenuItem);
+    }
+
+    public void addToExistedBillDetail(BillDetail existedBillDetail, BillDetail newBillDetail) {
+        int newQuantity = existedBillDetail.getQuantity() + newBillDetail.getQuantity();
+        existedBillDetail.setQuantity(newQuantity);
+    }
+
+    public void addNewBillDetail(BillDetail billDetailToAdd) {
+        this.billDetails.add(billDetailToAdd);
+        billDetailToAdd.setBillOrder(this);
     }
 }

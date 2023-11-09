@@ -8,6 +8,7 @@ public class MenuItemResponse {
     public String description;
     public String image;
     public Double price;
+    public boolean isDeleted;
     public Timestamp createdAt;
     public Timestamp updatedAt;
 }

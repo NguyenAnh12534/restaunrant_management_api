@@ -2,7 +2,6 @@ package com.example.restaurant_app_spring.service.impl;
 
 import com.example.restaurant_app_spring.dto.request.billdetail.BillDetailRequest;
 import com.example.restaurant_app_spring.dto.request.billorder.BillOrderRequest;
-import com.example.restaurant_app_spring.dto.response.billorder.BillOrderResponse;
 import com.example.restaurant_app_spring.entity.MenuItem;
 import com.example.restaurant_app_spring.repository.BillDetailRepository;
 import com.example.restaurant_app_spring.repository.BillOrderRepository;
@@ -10,16 +9,12 @@ import com.example.restaurant_app_spring.repository.MenuItemRepository;
 import com.example.restaurant_app_spring.service.BillOrderService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 
 @SpringBootTest
 class BillOrderServiceImplTest {
